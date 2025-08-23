@@ -1,0 +1,50 @@
+print("Bem vindo ao seu Mundo!")
+
+nome = input("Digite seu nome:")
+
+while True:
+    classe = input("Escolha sua classe (Guerreiro ou Mago): ")
+
+    if classe == "Guerreiro":
+        print("Você é um Guerreiro")
+        vida = 120
+        ataque = 15
+        break
+    elif classe == "Mago":
+        print("Você é o mago com mais sabio do reino reino!!")
+        vida = 80
+        ataque = 25
+        break
+    else:
+        print("Classe inválida! Tente novamente.\n")
+
+print(f"\nBoa sorte, {nome} o {classe}! Sua jornada começa agora...\n")
+
+print("Voçê tem 3 escolhas! ")
+
+while True:
+    caminhos = input("Escolha um caminho (Floresta, Caverna ou Castelo): ")
+
+    if caminhos == "Floresta":
+         print("Você escolheu o caminho da floresta, onde terá de enfrentar o goblin!!")
+         inimigo = "globin"
+         vida_inimigo = 80
+         ataque_inimigo = 10
+         break
+    elif caminhos == "Caverna":
+        print("Você escolheu o caminho da Caverna, onde terá de enfrentar o Golem de pedra!!")
+        inimigo = "Golem de pedra"
+        vida_inimigo = 100
+        ataque_inimigo = 15
+        break
+    elif caminhos == "Castelo":
+        print("Você escolheu o caminho do Castelo, onde terá de enfrentar Dragão!!")
+        inimigo = "Dragão de Fogo"
+        vida_inimigo = 120
+        ataque_inimigo = 20
+        break
+    else:
+        print("Caminho Invalido,Tente novamente")
+        break
+
+print(f"\na batalha contra {inimigo} começou!:\n")
