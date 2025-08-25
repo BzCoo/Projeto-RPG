@@ -1,0 +1,184 @@
+import random
+
+print(
+'''
+    
+██████╗░███████╗███╗░░░███╗░░░░░░██╗░░░██╗██╗███╗░░██╗██████╗░░█████╗░  ░█████╗░░█████╗░
+██╔══██╗██╔════╝████╗░████║░░░░░░██║░░░██║██║████╗░██║██╔══██╗██╔══██╗  ██╔══██╗██╔══██╗
+██████╦╝█████╗░░██╔████╔██║█████╗╚██╗░██╔╝██║██╔██╗██║██║░░██║██║░░██║  ███████║██║░░██║
+██╔══██╗██╔══╝░░██║╚██╔╝██║╚════╝░╚████╔╝░██║██║╚████║██║░░██║██║░░██║  ██╔══██║██║░░██║
+██████╦╝███████╗██║░╚═╝░██║░░░░░░░░╚██╔╝░░██║██║░╚███║██████╔╝╚█████╔╝  ██║░░██║╚█████╔╝
+╚═════╝░╚══════╝╚═╝░░░░░╚═╝░░░░░░░░░╚═╝░░░╚═╝╚═╝░░╚══╝╚═════╝░░╚════╝░  ╚═╝░░╚═╝░╚════╝░
+
+░██████╗███████╗██╗░░░██╗  ███╗░░░███╗██╗░░░██╗███╗░░██╗██████╗░░█████╗░
+██╔════╝██╔════╝██║░░░██║  ████╗░████║██║░░░██║████╗░██║██╔══██╗██╔══██╗
+╚█████╗░█████╗░░██║░░░██║  ██╔████╔██║██║░░░██║██╔██╗██║██║░░██║██║░░██║
+░╚═══██╗██╔══╝░░██║░░░██║  ██║╚██╔╝██║██║░░░██║██║╚████║██║░░██║██║░░██║
+██████╔╝███████╗╚██████╔╝  ██║░╚═╝░██║╚██████╔╝██║░╚███║██████╔╝╚█████╔╝
+╚═════╝░╚══════╝░╚═════╝░  ╚═╝░░░░░╚═╝░╚═════╝░╚═╝░░╚══╝╚═════╝░░╚════╝░
+
+'''
+)
+
+import random
+
+nome = input("Digite seu nome: ")
+
+mochila = []
+p_vida = 20
+
+#  Escolha da classe 
+while True:
+    classe = input(f"{nome}, agora escolha sua classe:\n(1) GUERREIRO      (2) MAGO:    ")
+
+    if classe == "1":
+        nome_classe = "Guerreiro"
+        print("\nVOCÊ É UM BRAVO GUERREIRO! 🗡🛡")
+        vida = 150
+        ataque = 20
+        print(f"❤️  VIDA: {vida}\n⚔️  ATAQUE: {ataque} \n")
+        print("Nascido entre batalhas e aço, o Guerreiro perdeu seu clã para as criaturas que assolam o reino. "
+              "Com sua espada em mãos, jura restaurar a honra de seu povo e abrir o baú que poderá salvar o mundo.")
+        break
+
+    elif classe == "2":
+        nome_classe = "Mago"
+        print("\nVOCÊ É O MAGO MAIS SÁBIO DO REINO!🔮🪄")
+        vida = 120
+        ataque = 30
+        print(f"❤️  VIDA: {vida}\n⚔️  ATAQUE: {ataque} \n")
+        print("Discípulo dos segredos antigos, o Mago viu sua torre ser consumida pelas chamas da destruição. "
+              "Agora busca vingança para restaurar o equilíbrio e provar que a sabedoria pode superar a destruição.")
+        break
+
+    else:
+        print("Classe inválida! Tente novamente.\n")
+
+print(f"\nBoa sorte, {nome} o {nome_classe}! Sua jornada começa agora...\n")
+
+# ===================== Caminhos =====================
+caminhos_disponiveis = ["Floresta", "Caverna", "Castelo"]
+
+# Loop de exploração
+while vida > 0 and caminhos_disponiveis:
+    print("\nCaminhos disponíveis:")
+    for caminho in caminhos_disponiveis:
+        print(f"- {caminho}")
+
+    escolha = input("Escolha um caminho: ")
+
+    if escolha not in caminhos_disponiveis:
+        print("Caminho inválido ou já visitado. Tente novamente.")
+        continue
+
+    caminhos_disponiveis.remove(escolha)
+
+    # Caminho - Floresta 
+    if escolha == "Floresta":
+        print("\nVocê acorda em uma floresta densa. O vento sopra frio, "
+              "o som de corvos ecoa e a luz do sol mal consegue atravessar as copas das árvores. "
+              "À sua frente há um baú escondido entre raízes.")
+
+        bau_floresta = input("Você encontrou um Baú! Deseja abrir (1) Sim ou Nao (2)? ")
+
+        if bau_floresta == "1":
+            print("Você encontrou uma poção de vida! 🍷")
+            mochila.append("poção")
+        elif bau_floresta == "2":
+            print("Você decidiu não abrir o baú e seguiu em frente.")
+
+        print("""Mais adentro da floresta, você começa a escutar sons estranhos. 
+Galhos se movem sem vento, sombras correm entre as folhas...
+Das trevas surge uma figura: o Goblin Rei, líder cruel e astuto!""")
+
+        batalha_goblin = input("Você está prestes a enfrentar o Goblin Rei! Deseja lutar (1) ou fugir (2)? ")
+
+        if batalha_goblin == "2":
+            print("\nVocê decide recuar, a escuridão da floresta engole seus passos...")
+            continue
+
+        inimigo = "Goblin Rei"
+        vida_inimigo = 50
+        ataque_inimigo = 10
+
+    # Caminho - Caverna 
+    elif escolha == "Caverna":
+        print("\nVocê entra na caverna... o ar é úmido e frio, e ecos de passos ressoam entre as pedras.")
+        print("Stalactites pendem do teto, e uma neblina leve cobre o chão. Conforme você avança, o chão treme com movimentos pesados.")
+        
+        print("Das sombras da caverna, surge um Golem Ancestral, seus olhos brilhando com uma luz vermelha ameaçadora. "
+              "Ele foi construído pelos antigos guardiões do reino para proteger os segredos das profundezas. "
+              "Se você quiser passar, terá que derrotá-lo em combate!")
+
+        batalha_golem = input("Você está prestes a enfrentar o Golem Ancestral! Deseja lutar (1) ou fugir (2)? ")
+
+        if batalha_golem == "2":
+            print("\nVocê decide recuar, e a escuridão da caverna parece engolir cada passo seu. "
+                  "O eco dos seus próprios movimentos ressoa pelas pedras, lembrando que o Golem ainda patrulha estas profundezas.")
+            continue
+
+        inimigo = "Golem de Pedra"
+        vida_inimigo = 80
+        ataque_inimigo = 12
+
+    # Caminho - Castelo 
+    elif escolha == "Castelo":
+        print("\nVocê se aproxima do castelo em ruínas... um Dragão desperta! Seus olhos incandescentes brilham na penumbra.")
+        print("Chamas escapam de suas narinas, iluminando as muralhas quebradas. Prepare-se para o combate final!")
+        batalha_dragon = input("Você está prestes a enfrentar o Dragão! Deseja lutar (1) ou fugir (2)? ")
+
+        if batalha_dragon == "2":
+            print("\nVocê decide recuar, mas o rugido do Dragão ecoa em sua mente, lembrando que ele ainda domina o castelo.")
+            continue
+
+        inimigo = "Dragão"
+        vida_inimigo = 120
+        ataque_inimigo = 18
+
+    #  Sistema de Batalha 
+    while vida > 0 and vida_inimigo > 0:
+        print(f"\n❤️ Sua vida: {vida} | Vida do {inimigo}: {vida_inimigo}")
+        ação = input("[1] Atacar [2] Defender [3] Mochila [4] Fugir: ")
+
+        if ação == "1":
+            dano = random.randint(ataque - 5, ataque + 5)
+            vida_inimigo -= dano
+            print(f"⚔️ Você causou {dano} de dano no {inimigo}.")
+
+        elif ação == "2":
+            defesa = 10
+            dano = max(ataque_inimigo - defesa, 0)
+            vida -= dano
+            print(f"🛡 Você defendeu! O inimigo causou apenas {dano} de dano.")
+
+        elif ação == "3":
+            if "poção" in mochila:
+                vida += p_vida
+                mochila.remove("poção")
+                print(f"🍷 Você usou uma poção e recuperou {p_vida} de vida!")
+            else:
+                print("Sua mochila está vazia!")
+
+        elif ação == "4":
+            print("🏃 Você fugiu da batalha!")
+            break
+
+        else:
+            print("Ação inválida! Escolha 1, 2, 3 ou 4.")
+            continue
+
+        # Turno do inimigo
+        if vida_inimigo > 0 and ação != "2":
+            dano = random.randint(ataque_inimigo - 3, ataque_inimigo + 3)
+            vida -= dano
+            print(f"💥 O {inimigo} atacou e causou {dano} de dano!")
+
+        # Vitória
+        if vida_inimigo <= 0:
+            print(f"🎉 Parabéns! Você derrotou o {inimigo}!")
+
+# Fim do jogo 
+if vida <= 0:
+    print("\n☠️ Você caiu em batalha... O mundo continua nas trevas.")
+else:
+    print("\n🏆 Você sobreviveu e derrotou todos os guardiões! O baú ancestral pode ser aberto!")
