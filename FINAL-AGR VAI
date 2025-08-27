@@ -1,0 +1,374 @@
+mochila = []
+p_vida = 30
+dicas = []
+tentativas = 3
+senha_bau = "LUZ"
+
+print(
+'''
+    
+██████╗░███████╗███╗░░░███╗░░░░░░██╗░░░██╗██╗███╗░░██╗██████╗░░█████╗░  ░█████╗░░█████╗░
+██╔══██╗██╔════╝████╗░████║░░░░░░██║░░░██║██║████╗░██║██╔══██╗██╔══██╗  ██╔══██╗██╔══██╗
+██████╦╝█████╗░░██╔████╔██║█████╗╚██╗░██╔╝██║██╔██╗██║██║░░██║██║░░██║  ███████║██║░░██║
+██╔══██╗██╔══╝░░██║╚██╔╝██║╚════╝░╚████╔╝░██║██║╚████║██║░░██║██║░░██║  ██╔══██║██║░░██║
+██████╦╝███████╗██║░╚═╝░██║░░░░░░░░╚██╔╝░░██║██║░╚███║██████╔╝╚█████╔╝  ██║░░██║╚█████╔╝
+╚═════╝░╚══════╝╚═╝░░░░░╚═╝░░░░░░░░░╚═╝░░░╚═╝╚═╝░░╚══╝╚═════╝░░╚════╝░  ╚═╝░░╚═╝░╚════╝░
+
+░██████╗███████╗██╗░░░██╗  ███╗░░░███╗██╗░░░██╗███╗░░██╗██████╗░░█████╗░
+██╔════╝██╔════╝██║░░░██║  ████╗░████║██║░░░██║████╗░██║██╔══██╗██╔══██╗
+╚█████╗░█████╗░░██║░░░██║  ██╔████╔██║██║░░░██║██╔██╗██║██║░░██║██║░░██║
+░╚═══██╗██╔══╝░░██║░░░██║  ██║╚██╔╝██║██║░░░██║██║╚████║██║░░██║██║░░██║
+██████╔╝███████╗╚██████╔╝  ██║░╚═╝░██║╚██████╔╝██║░╚███║██████╔╝╚█████╔╝
+╚═════╝░╚══════╝░╚═════╝░  ╚═╝░░░░░╚═╝░╚═════╝░╚═╝░░╚══╝╚═════╝░░╚════╝░
+
+
+'''
+)
+
+nome = input("Digite seu nome:   ").upper()
+
+print(
+"\nO mundo mergulha em trevas.\n"
+"Um artefato sagrado, capaz de restaurar a luz, foi selado em um baú ancestral.\n"
+"Três guardiões: o Goblin Rei, o Golem Ancestral e o Dragão Ancião. Eles mantêm as pistas necessárias para quebrar o selo.\n"
+"Apenas um herói terá coragem para enfrentar essa jornada.\n\n"
+"Mas quem será esse herói?\n"
+"O Guerreiro, forjado em batalhas, movido pela honra perdida...\n"
+"Ou o Mago, mestre dos segredos arcanos, guiado pela busca do equilíbrio?\n"
+"A escolha está em suas mãos...\n\n"
+)
+
+while True:
+    classe = int(input(f"{nome}, escolha sua classe:\n[1] GUERREIRO      [2] MAGO :    "))
+
+    if classe == 1:
+        print("\nVOCÊ É UM BRAVO GUERREIRO! 🗡 🛡")
+        vida = 200
+        ataque = 25
+        print(f"❤️  VIDA: {vida}\n⚔️  ATAQUE: {ataque} \n")
+        print("O mundo mergulha em trevas. Um único artefato sagrado foi trancado em um baú ancestral. Apenas aquele que derrotar os três guardiões terá pistas para quebrar o selo.")
+        print("Nascido entre batalhas e aço, o Guerreiro perdeu seu clã para as criaturas que agora assolam o reino. Com sua espada em mãos, jura restaurar a honra de seu povo e abrir o baú que poderá salvar o mundo.")
+        break
+
+    elif classe == 2:
+        print("\nVOCÊ É O MAGO MAIS SÁBIO DO REINO!🔮🪄")
+        vida = 150
+        ataque = 35
+        print(f"❤️  VIDA: {vida}\n⚔️  ATAQUE: {ataque} \n")
+        print("O mundo mergulha em trevas. Um único artefato sagrado foi trancado em um baú ancestral. Apenas aquele que derrotar os três guardiões terá pistas para quebrar o selo.")
+        print("Discípulo dos segredos antigos, o Mago viu sua torre ser consumida pelas chamas da destruição. Agora, busca vingança, não apenas para restaurar o equilíbrio, mas também para provar que a sabedoria pode superar a destruição.")
+        break
+
+    else:
+        print("⚠️  Classe inválida. Tente novamente.")
+
+caminhos_disponiveis = [1, 2, 3]
+
+while caminhos_disponiveis:
+    print("\nCaminhos disponíveis:")
+    for c in caminhos_disponiveis:
+        if c == 1:
+            print("[1] FLORESTA")
+        elif c == 2:
+            print("[2] CAVERNA")
+        elif c == 3:
+            print("[3] CASTELO")
+
+    try:
+        caminho = int(input("\nSelecione seu caminho:     "))
+    except ValueError:
+        print("⚠️  Escolha inválida. Digite o número do caminho.")
+        continue
+
+    if caminho not in caminhos_disponiveis:
+        print("⚠️  Esse caminho já foi escolhido ou não existe. Tente outro.")
+        continue
+
+    
+    caminhos_disponiveis.remove(caminho)
+
+    if caminho == 1:
+        print(
+            """\n\n 
+            ░█▀▀▀ ░█─── ░█▀▀▀█ ░█▀▀█ ░█▀▀▀ ░█▀▀▀█ ▀▀█▀▀ ─█▀▀█ 
+            ░█▀▀▀ ░█─── ░█──░█ ░█▄▄▀ ░█▀▀▀ ─▀▀▀▄▄ ─░█── ░█▄▄█ 
+            ░█─── ░█▄▄█ ░█▄▄▄█ ░█─░█ ░█▄▄▄ ░█▄▄▄█ ─░█── ░█─░█
+            \n
+            Após escolher o caminho da floresta, você sente o ar mudar. O vento sopra entre as árvores, trazendo um silêncio inquietante.
+            As copas altas escondem a luz, e cada passo ecoa como um presságio.
+            Entre raízes retorcidas e pedras cobertas de musgo, seus olhos encontram um baú de madeira simples, quase esquecido pelo tempo.
+            Você o encontrou.\n\n"""
+        )
+        abrir_bau = input("Deseja abrir o baú? [s/n]:     ").lower()
+        if abrir_bau == "s":
+            mochila.append(p_vida)
+            print("❤️  Você abriu o baú e encontrou uma poção de vida! Ela é capaz de restaurar 30 pontos de vida.")
+        else:
+            print("🚶  Você decidiu não abrir o baú e seguiu adiante.")
+
+        print(
+            """\n\n
+            Mais adentro da floresta, você começa a escutar sons estranhos. Primeiro, passos leves... depois, gargalhadas agudas ecoando entre as árvores.
+            A cada metro, o som se torna mais próximo, mais perturbador, como se dezenas de olhos o observassem na neblina.
+            Galhos se movem sem vento, sombras correm entre as folhas, e o silêncio da floresta é quebrado por uma voz áspera, arrastada e cruel.
+            Das trevas surge uma figura menor que um homem, mas envolta em fúria: o Goblin Rei, empunhando sua lâmina enferrujada e um sorriso perturbador.
+            Ele não guarda apenas o domínio da floresta... mas também a primeira pista para abrir o baú ancestral.\n\n"""
+        )
+        batalha_goblin = input("⚔️  Você está prestes a enfrentar o Goblin Rei!\nDeseja [1] LUTAR ou [2] FUGIR?:     ")
+
+        if batalha_goblin == "1":
+            vida_goblin = 80
+            ataque_goblin = 10
+
+            while vida > 0 and vida_goblin > 0:
+                print(f"\n Sua vida: ❤️  {vida} | Vida do Goblin Rei: 💚  {vida_goblin}")
+                acao = input("Escolha sua ação:\n [1] ATACAR  [2] MOCHILA:     ")
+
+                if acao == "1":
+                    vida_goblin -= ataque
+                    print(f"\nVocê atacou! Vida do Goblin Rei agora: 💚  {vida_goblin}")
+                elif acao == "2":
+                    print(f"Mochila: {mochila}")
+                    if p_vida in mochila:
+                        usar = input("Usar poção de vida ❤️  ? (s/n):     ").lower()
+                        if usar == "s":
+                            vida += p_vida
+                            mochila.remove(p_vida)
+                            print(f"Você usou a poção! Sua vida agora: ❤️  {vida}")
+                    else:
+                        print("❌  Você não tem itens utilizáveis.")
+                else:
+                    print("⚠️  Ação inválida.")
+
+                if vida_goblin > 0:
+                    vida -= ataque_goblin
+                    print(f"O Goblin Rei atacou! Sua vida agora: ❤️  {vida}")
+
+            if vida > 0:
+                print("\n🔥  Você derrotou o Goblin Rei!")
+                dicas.append("Sem mim, não há vida na Terra...")
+                print("🗝️  Dica coletada:  ", dicas[-1])
+
+            else:
+                print("☠️  Você foi derrotado pelo Goblin Rei...")
+                print("""""
+                      
+
+░█▀▀█ ─█▀▀█ ░█▀▄▀█ ░█▀▀▀ 　 ░█▀▀▀█ ░█──░█ ░█▀▀▀ ░█▀▀█ 
+░█─▄▄ ░█▄▄█ ░█░█░█ ░█▀▀▀ 　 ░█──░█ ─░█░█─ ░█▀▀▀ ░█▄▄▀ 
+░█▄▄█ ░█─░█ ░█──░█ ░█▄▄▄ 　 ░█▄▄▄█ ──▀▄▀─ ░█▄▄▄ ░█─░█
+                      
+                      """)
+                exit()
+
+        elif batalha_goblin == "2":
+            print(
+            """O medo fala mais alto. Você dá alguns passos para trás, depois corre pela floresta sem olhar para trás. As gargalhadas do Goblin Rei ecoam, zombando de sua decisão.
+            A escuridão da mata parece se fechar ao seu redor, e a sensação de ser observado nunca desaparece. Talvez tenha escapado por agora... mas o preço é alto. Sem enfrentar o guardião, não haverá pista para o baú ancestral.
+            Você sobrevive, mas a jornada rumo à salvação do mundo permanece incompleta."""
+            )
+            print("""""
+                      
+
+░█▀▀█ ─█▀▀█ ░█▀▄▀█ ░█▀▀▀ 　 ░█▀▀▀█ ░█──░█ ░█▀▀▀ ░█▀▀█ 
+░█─▄▄ ░█▄▄█ ░█░█░█ ░█▀▀▀ 　 ░█──░█ ─░█░█─ ░█▀▀▀ ░█▄▄▀ 
+░█▄▄█ ░█─░█ ░█──░█ ░█▄▄▄ 　 ░█▄▄▄█ ──▀▄▀─ ░█▄▄▄ ░█─░█
+                      
+                      """)
+            exit()
+
+        else:
+            print("⚠️  Caminho inválido, tente novamente")
+
+    elif caminho == 2:
+        print("""\n\n
+            ░█▀▀█ ─█▀▀█ ░█──░█ ░█▀▀▀ ░█▀▀█ ░█▄─░█ ─█▀▀█ 
+            ░█─── ░█▄▄█ ─░█░█─ ░█▀▀▀ ░█▄▄▀ ░█░█░█ ░█▄▄█ 
+            ░█▄▄█ ░█─░█ ──▀▄▀─ ░█▄▄▄ ░█─░█ ░█──▀█ ░█─░█
+              \n
+            Você entra na caverna... o ar é úmido e frio, e ecos de passos ressoam entre as pedras.
+            Stalactites pendem do teto, e uma neblina leve cobre o chão. Conforme você avança, o chão treme com movimentos pesados.
+            Das sombras da caverna, surge um Golem Ancestral, seus olhos brilhando com uma luz vermelha ameaçadora.
+            Ele foi construído pelos antigos guardiões do reino para proteger os segredos das profundezas.
+            Se você quiser passar, terá que derrotá-lo em combate!\n\n""")
+
+        batalha_golem = input("⚔️  Você está prestes a enfrentar o Golem Ancestral!\n Deseja [1] LUTAR ou [2] FUGIR?:     ")
+
+        if batalha_golem == "1":
+            vida_golem = 100
+            ataque_golem = 20
+
+            while vida > 0 and vida_golem > 0:
+                print(f"\nSua vida: ❤️  {vida} | Vida do Golem Ancestral: 💚  {vida_golem}")
+                acao = input("Escolha sua ação:\n [1] ATACAR  [2] MOCHILA:     ")
+
+                if acao == "1":
+                    vida_golem -= ataque
+                    print(f"Você atacou! Vida do Golem Ancestral agora: 💚  {vida_golem}")
+                elif acao == "2":
+                    print(f"Mochila: {mochila}")
+                    if p_vida in mochila:
+                        usar = input("Usar poção de vida? (s/n): ").lower()
+                        if usar == "s":
+                            vida += p_vida
+                            mochila.remove(p_vida)
+                            print(f"Você usou a poção! Sua vida agora: ❤️  {vida}")
+                    else:
+                        print("❌  Você não tem itens utilizáveis.")
+                else:
+                    print("⚠️  Ação inválida.")
+
+                if vida_golem > 0:
+                    vida -= ataque_golem
+                    print(f"O Golem Ancestral atacou! Sua vida agora: ❤️  {vida}")
+
+            if vida > 0:
+                print("\n🔥  Você derrotou o Golem Ancestral!")
+                dicas.append("Sou aquilo que afasta as trevas...")
+                print("🗝️  Dica coletada:  ", dicas[-1])
+
+                print("""\n
+                    No fundo da caverna, você encontra dois baús misteriosos.
+                    Um deles parece antigo e seguro. O outro está coberto por marcas estranhas e parece instável.""")
+                escolha_bau = input("\nQual baú você deseja abrir? [1] BAÚ SEGURO  [2] BAÚ INSTÁVEL:     ")
+
+                if escolha_bau == "1":
+                    mochila.append(p_vida)
+                    print("❤️  Você encontrou uma poção de vida! Ela foi adicionada à sua mochila.")
+                elif escolha_bau == "2":
+                    vida -= 20
+                    print("💥  O baú explode assim que você o abre! Você sofre 20 de dano.  💥")
+                    print(f"Sua vida agora: ❤️  {vida}")
+                else:
+                    print("⚠️  Escolha inválida. Você decide não abrir nenhum baú.")
+            else:
+                print("☠️  Você foi derrotado pelo Golem Ancestral...")
+                print("""""
+                      
+
+░█▀▀█ ─█▀▀█ ░█▀▄▀█ ░█▀▀▀ 　 ░█▀▀▀█ ░█──░█ ░█▀▀▀ ░█▀▀█ 
+░█─▄▄ ░█▄▄█ ░█░█░█ ░█▀▀▀ 　 ░█──░█ ─░█░█─ ░█▀▀▀ ░█▄▄▀ 
+░█▄▄█ ░█─░█ ░█──░█ ░█▄▄▄ 　 ░█▄▄▄█ ──▀▄▀─ ░█▄▄▄ ░█─░█
+                      
+                      """)
+                exit()
+
+        elif batalha_golem == "2":
+            print("""\n
+            Você recua, fugindo pelo labirinto da caverna. O Golem permanece imóvel, como se desprezasse sua fraqueza. Mas ao fugir, a pista para o baú ancestral se perde.""")
+            print("""""
+                      
+
+░█▀▀█ ─█▀▀█ ░█▀▄▀█ ░█▀▀▀ 　 ░█▀▀▀█ ░█──░█ ░█▀▀▀ ░█▀▀█ 
+░█─▄▄ ░█▄▄█ ░█░█░█ ░█▀▀▀ 　 ░█──░█ ─░█░█─ ░█▀▀▀ ░█▄▄▀ 
+░█▄▄█ ░█─░█ ░█──░█ ░█▄▄▄ 　 ░█▄▄▄█ ──▀▄▀─ ░█▄▄▄ ░█─░█
+                      
+                      """)
+            exit()
+   
+   
+    elif caminho == 3:
+        print("""\n\n
+            ░█▀▀█ ─█▀▀█ ░█▀▀▀█ ▀▀█▀▀ ░█▀▀▀ ░█─── ░█▀▀▀█ 
+            ░█─── ░█▄▄█ ─▀▀▀▄▄ ─░█── ░█▀▀▀ ░█─── ░█──░█ 
+            ░█▄▄█ ░█─░█ ░█▄▄▄█ ─░█── ░█▄▄▄ ░█▄▄█ ░█▄▄▄█
+              \n
+            Você se aproxima do castelo em ruínas... um Dragão desperta! Seus olhos incandescentes brilham na penumbra.
+            Chamas escapam de suas narinas, iluminando as muralhas quebradas. Prepare-se para o combate!\n\n""")
+        batalha_dragon = input("⚔️  Você está prestes a enfrentar o Dragão! Deseja [1] LUTAR ou [2] FUGIR?:     ")
+
+        if batalha_dragon == "1":
+            vida_dragon = 120
+            ataque_dragon = 25
+
+            while vida > 0 and vida_dragon > 0:
+                print(f"\nSua vida: ❤️  {vida} | Vida do Dragão: 💚  {vida_dragon}")
+                acao = input("Escolha sua ação:\n[1] ATACAR  [2] MOCHILA :     ")
+
+                if acao == "1":
+                    vida_dragon -= ataque
+                    print(f"Você atacou! Vida do Dragão agora: 💚  {vida_dragon}")
+                elif acao == "2":
+                    print(f"Mochila: {mochila}")
+                    if p_vida in mochila:
+                        usar = input("Usar poção de vida? (s/n): ").lower()
+                        if usar == "s":
+                            vida += p_vida
+                            mochila.remove(p_vida)
+                            print(f"Você usou a poção! Sua vida agora: ❤️  {vida}")
+                    else:
+                        print("❌  Você não tem itens utilizáveis.")
+                else:
+                    print("⚠️  Ação inválida.")
+
+                if vida_dragon > 0:
+                    vida -= ataque_dragon
+                    print(f"O Dragão atacou! Sua vida agora: ❤️  {vida}")
+
+            if vida > 0:
+                print("\n🔥  Você derrotou o Dragão!")
+                dicas.append("Sou vista no nascer do sol...")
+                print("🗝️  Dica coletada:  ", dicas[-1])
+            else:
+                print("☠️  Você foi derrotado pelo Dragão...")
+                print("""""
+                      
+
+░█▀▀█ ─█▀▀█ ░█▀▄▀█ ░█▀▀▀ 　 ░█▀▀▀█ ░█──░█ ░█▀▀▀ ░█▀▀█ 
+░█─▄▄ ░█▄▄█ ░█░█░█ ░█▀▀▀ 　 ░█──░█ ─░█░█─ ░█▀▀▀ ░█▄▄▀ 
+░█▄▄█ ░█─░█ ░█──░█ ░█▄▄▄ 　 ░█▄▄▄█ ──▀▄▀─ ░█▄▄▄ ░█─░█
+                      
+                      """)
+                exit()
+
+        elif batalha_dragon == "2":
+            print("\nVocê recua, fugindo pelas ruínas do castelo. O Dragão observa sua retirada com desdém. Mas ao fugir, a pista para o baú ancestral se perde.")
+            print("""""
+                      
+
+░█▀▀█ ─█▀▀█ ░█▀▄▀█ ░█▀▀▀ 　 ░█▀▀▀█ ░█──░█ ░█▀▀▀ ░█▀▀█ 
+░█─▄▄ ░█▄▄█ ░█░█░█ ░█▀▀▀ 　 ░█──░█ ─░█░█─ ░█▀▀▀ ░█▄▄▀ 
+░█▄▄█ ░█─░█ ░█──░█ ░█▄▄▄ 　 ░█▄▄▄█ ──▀▄▀─ ░█▄▄▄ ░█─░█
+                      
+                      """)
+            exit()
+
+        if vida > 0:
+            print("""\n\n
+                  
+                ░█▀▀█ ─█▀▀█ ░█─░█ 　 ─█▀▀█ ░█▄─░█ ░█▀▀█ ░█▀▀▀ ░█▀▀▀█ ▀▀█▀▀ ░█▀▀█ ─█▀▀█ ░█─── 
+                ░█▀▀▄ ░█▄▄█ ░█─░█ 　 ░█▄▄█ ░█░█░█ ░█─── ░█▀▀▀ ─▀▀▀▄▄ ─░█── ░█▄▄▀ ░█▄▄█ ░█─── 
+                ░█▄▄█ ░█─░█ ─▀▄▄▀ 　 ░█─░█ ░█──▀█ ░█▄▄█ ░█▄▄▄ ░█▄▄▄█ ─░█── ░█─░█ ░█─░█ ░█▄▄█
+                  \n
+                Parabéns! Você derrotou todos os guardiões. Agora, é hora de reunir suas dicas e abrir o Baú Ancestral!\n\n""")
+            print("DICAS COLETADAS:")
+            for dica in dicas:
+                print("-", dica)
+
+        while tentativas > 0:
+            chute = input("\n🗝️  Digite a senha do Baú Ancestral:  ").upper()
+            if chute == senha_bau:
+                print("""\n\n
+                ░█──░█ ░█▀▀▀█ ░█─░█ 　 ░█──░█ ▀█▀ ░█▄─░█ 
+                ░█▄▄▄█ ░█──░█ ░█─░█ 　 ░█░█░█ ░█─ ░█░█░█ 
+                ──░█── ░█▄▄▄█ ─▀▄▄▀ 　 ░█▄▀▄█ ▄█▄ ░█──▀█
+                \n
+                ✨ O baú se abre em uma explosão de luz! Você encontrou o tesouro lendário! ✨""")
+                break
+                exit()
+
+            else:
+                tentativas -= 1
+                print(f"❌ Senha incorreta. Tentativas restantes:  {tentativas}")
+            
+        if tentativas == 0:
+            print("❌ Você falhou em abrir o baú. O segredo permanece oculto...")
+            print("""""
+                      
+
+░█▀▀█ ─█▀▀█ ░█▀▄▀█ ░█▀▀▀ 　 ░█▀▀▀█ ░█──░█ ░█▀▀▀ ░█▀▀█ 
+░█─▄▄ ░█▄▄█ ░█░█░█ ░█▀▀▀ 　 ░█──░█ ─░█░█─ ░█▀▀▀ ░█▄▄▀ 
+░█▄▄█ ░█─░█ ░█──░█ ░█▄▄▄ 　 ░█▄▄▄█ ──▀▄▀─ ░█▄▄▄ ░█─░█
+                      
+                      """)
+            exit()
